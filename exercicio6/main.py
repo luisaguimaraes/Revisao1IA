@@ -5,30 +5,38 @@
 
 import heapq
 
-class Filadeprioridade;
+class FilaDePrioridade:
 
-    def __init__ (self):
-        self._fila =[]
-        self._indice=0
+	def __init__(self):
+		self._fila = []
+		self._indice = 0
 
-    def inserir (self,, item, prioridade):
-        heapq.heappush(self._fila, (-prioridade, self._indice, item))
-        self._indice +=1
+	def inserir(self, item, prioridade):
+		heapq.heappush(self._fila, (-prioridade, self._indice, item))
+		self._indice += 1
 
-    def remover (self):
-        return heapq.heappop(self._fila)[-1]
+	def listar(self):
+		for i in range(1, 10):
+			print(heapq.heappop(self._fila)[-1])
 
-class Pessoa:
-    def __init__ (self, nome):
-        self.nome=nome
 
-    def __repr__(self):
-        return self.nome
+class Tarefa:
+	def __init__(self, nome):
+		self.nome = nome
 
-fila = Filadeprioridade
-fila.inserir(Pessoa('Maria'),20)
-fila.inserir(Pessoa('Pedro'),16)
-fila.inserir(Pessoa('Felipe'),25)
-fila.inserir(Pessoa('Carol'),23)
+	def __repr__(self):
+		return self.nome
 
-print(fila.remover())
+fila = FilaDePrioridade()
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 3:')), 3)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 5:')), 5)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 1:')), 1)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 4:')), 4)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 3:')), 3)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 2:')), 2)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 1:')), 1)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 5:')), 5)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 2:')), 2)
+fila.inserir(Tarefa(input('Escreva sua tarefa de grau de importância 5:')), 5)
+
+fila.listar()
